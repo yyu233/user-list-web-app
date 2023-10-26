@@ -5,7 +5,7 @@ import ErrorDisplay from '../ErrorDisplay/ErrorDisplay';
 import LoadinIndicator from '../LoadingIndicator/LoadingIndicator';
 
 const URL = 'https://jsonplaceholder.typicode.com/users'
-const URL_LOCAL = 'http://localhost:3333/1'
+//const URL_LOCAL = 'http://localhost:3333/1'
 
 export default function UserList() {
   const [list, setList] = useState([]);
@@ -21,7 +21,7 @@ export default function UserList() {
       return;
     }
 
-    fetch(URL_LOCAL)
+    fetch(URL)
         .then(data => data.json())
         .then(items => {
             if(mounted.current) {
