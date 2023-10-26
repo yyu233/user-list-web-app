@@ -1,11 +1,11 @@
-import './UserList.css';
+import Table from 'react-bootstrap/Table';
 
 import React, { useEffect, useState, useRef } from 'react';
 import ErrorDisplay from '../ErrorDisplay/ErrorDisplay';
 import LoadinIndicator from '../LoadingIndicator/LoadingIndicator';
 
 const URL = 'https://jsonplaceholder.typicode.com/users'
-const URL2 = 'http://localhost:3333/1'
+const URL_LOCAL = 'http://localhost:3333/1'
 
 export default function UserList() {
   const [list, setList] = useState([]);
@@ -21,7 +21,7 @@ export default function UserList() {
       return;
     }
 
-    fetch(URL2)
+    fetch(URL_LOCAL)
         .then(data => data.json())
         .then(items => {
             if(mounted.current) {
@@ -43,9 +43,26 @@ export default function UserList() {
 
   return (
     <div className="wrapper">
-        <ul>
-            {list.map(item => <li key={item.id}>Name:{item.name} Username:{item.username} Email:{item.email}</li>)}
-        </ul>
+        <Table responsive>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Email Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                {list.map(item => (
+                    <tr key={item.id}>
+                        <td>{item.id}</td>
+                        <td>{item.name}</td>
+                        <td>{item.username}</td>
+                        <td>{item.email}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </Table>
     </div>
   );
 }

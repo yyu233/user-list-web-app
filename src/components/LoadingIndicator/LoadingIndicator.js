@@ -1,9 +1,10 @@
+import './LoadingIndicator.css'
 import React from 'react';
 
-export default function LoadinIndicator() {
+export default function LoadingIndicator() {
     return (
-        <header>
-            <h1>Loading...</h1>
-        </header>
+        <div className="centered">
+            <h1> Loading... </h1>
+        </div>
     );
 }
